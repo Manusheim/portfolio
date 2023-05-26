@@ -1,0 +1,374 @@
+@charset "utf-8";
+
+:root {
+
+    /**
+    * Fonts : background, colours and sizes
+    */
+    --sc-light: #f8f8ff;
+    --sc-yellow: #ebca13;
+    --sc-light-yellow: #FDFAE3;
+    --sc-orange: #FF751A;
+    --sc-light-orange: #FFE0CC;
+    --sc-dark-grey: #111;
+    --sc-coal-grey: #555;
+    --sc-light-grey: #FAFAFA;
+    --sc-dark-blue: #2054a2;
+    --sc-light-blue: #F6FAFE;
+
+	--fs-normal: 0.9rem;
+    --fs-big: 1.8rem;
+    --fs-bigger: 2.7rem;
+
+    /**
+    * Background-colors
+    */
+    --bg-plain-white: #fff;
+    --bg-plain-black: #000;
+
+    --bg-gradient-main: linear-gradient(
+        to bottom, 
+        var(--sc-yellow),
+        var(--sc-light-yellow),
+        var(--sc-light-orange),
+        var(--sc-orange)
+    );
+    --bg-gradient-header: linear-gradient(
+        to right, 
+        var(--sc-light), 
+        var(--sc-coal-grey)
+    );
+
+    /**
+    * Shadows 
+    */
+    --ts-light-blur: var(--sc-light) 0.2em 0.3em 0.4em;
+    --ts-medium-grey-blur: var(--sc-coal-grey) 0.1em 0.2em 0.3em;
+    --ts-coal-grey-blur: var(--sc-dark-grey) 0.2em 0.3em 0.4em;
+
+    --bs-medium-grey-blur: var(--sc-coal-grey) 0 0.2em 0.3em;
+
+    --fs-size-logo: 2.4rem;
+
+    /**
+    * Transitions 
+    */
+
+    --transition-1: 0.25s ease;
+    --transition-2: 0.5s ease-in-out;
+
+    /**
+    * Grid
+    */
+    --wide-grid: 2 / 4;
+
+    /** **/
+}
+
+/**
+* Light reset 
+*/
+html {
+	font-size:100.01%;
+}
+
+.page-inside {
+    background: var(--sc-light);
+    color: var(--sc-dark-grey);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: var(--fs-normal);
+	padding:0;
+	margin:0;
+}
+
+.page-grid  {
+    display: grid;
+    grid-template-columns: 0 1fr 1fr 0;
+    grid-template-rows: 1fr;
+    grid-gap: 0;
+}    
+
+*::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0.4rem;
+}
+
+
+a:link {
+    color: var(--sc-dark-blue);
+}
+
+a:visited {
+    color: var(--sc-dark-grey);
+}
+
+a:hover, a:focus {
+	text-decoration:overline;
+}
+
+a:active {
+    text-decoration:underline;
+}
+
+/* Header*/
+#page-top {
+    color: var(--sc-coal-grey);
+    padding: 1em;
+    display: flex;
+    position: relative;
+    background: var(--sc-light);
+    box-shadow: var(--bs-medium-grey-blur);
+    border-bottom: solid 0.1rem var(--sc-coal-grey);
+    grid-column: var(--wide-grid);
+}
+#page-top > nav > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+#navigation {
+    /*position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    min-width:50%;
+    max-width: 75%;*/
+    background-color: var(--sc-light);
+    border: solid 0.3rem var(--sc-orange);
+    border-radius: 0.3rem;
+    display: flex;
+    flex: 0 1 auto;
+    /*
+    align-items: flex-start;
+    align-self: normal;
+    align-content: space-around;*/
+    gap: 2rem 2rem;
+}
+.menu-site {
+    font-family: "Share Tech Mono", "Courier New", Courier, monospace;
+    color: var(--sc-dark-grey);
+    border: solid 0.3rem var(--sc-light);
+    background-color: var(--sc-light-orange);
+    display: none;
+}
+#navigation ul {
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+
+.menu-site li a {
+    background-color: var(--sc-light-orange);
+    color: var(--sc-coal-grey);
+    display: inline-block;
+    box-sizing:border-box;
+    width:100%;
+    text-decoration: none;
+    font-weight:bold;
+    padding:1rem;
+    border-top: solid 0.2rem var(--sc-light-orange);
+    border-bottom: solid 0.2rem var(--sc-dark-grey);
+}
+.menu-site li a:hover, .menu-site li a:active  {
+    background-color: var(--sc-light-yellow);
+}
+.menu-site li a:hover, .menu-site li a:active {
+    border-top: solid 0.2rem var(--sc-orange);
+    border-bottom: solid 0.2rem var(--sc-dark-blue);
+}
+.menu-site.active {
+    display: block;
+}
+#button-display-close {
+    display:none;
+}
+
+.btn-menu-site {
+    background-color: var(--sc-light-orange);
+    color: var(--sc-dark-grey);
+}
+
+.logo-whole {
+    box-sizing: border-box;
+    display: inline-block;
+    max-width: fit-content;
+    margin: 0;
+}
+
+.logo-whole figcaption {
+    text-align: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+    background-color: var(--sc-light);
+    border-style: solid;
+    border-radius: 10em / 5em;; 
+    border-color: var(--sc-yellow) var(--sc-yellow) var(--sc-orange) var(--sc-orange);
+    width: fit-content;
+    padding: 2em 1em;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    transition-duration: 1s;
+    border-color: var(--sc-orange) var(--sc-orange) var(--sc-yellow) var(--sc-yellow);
+}
+
+.logo1 {
+    font-family: "Share Tech Mono", "Courier New", Courier, monospace;
+    color: var(--sc-coal-grey);
+    font-size: var(--fs-size-logo);
+}
+.logo2 {
+    font-family: "UnifrakturMaguntia", Georgia, "Times New Roman", Times, serif;
+    color: var(--sc-dark-blue);
+    font-size: var(--fs-size-logo);
+}
+/* End Header*/
+
+/* Body */
+#page-middle {
+    grid-column: var(--wide-grid);
+}
+
+.introduction {
+    background-color: var(--sc-light-blue);
+    background-image: url("../img/abstract-image-of-blue-and-orange-lines-curving.jpg");
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-size: cover; 
+}
+
+.section-articles {
+    grid-column: var(--wide-grid);
+}
+
+.body-intro {
+    padding: 2em;
+    margin: 0 auto;
+    grid-column: 2 / 4;
+}
+.title-main {
+    background-color: var(--sc-light-yellow);
+    color: var(--sc-dark-blue);
+    padding: 0.5em 1em;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border:solid 1px var(--sc-yellow);
+    border-bottom: none;
+}
+.title-main::first-letter {
+    font-size:3rem; 
+    color: var(--sc-dark-blue);
+    text-shadow: var(--sc-dark-blue) 0.2rem 0.2rem 0.4rem;
+    font-family: "UnifrakturMaguntia", Georgia, "Times New Roman", Times, serif;
+}
+.container-text-intro {
+    background-color: var(--sc-light);
+    opacity:0.9;
+    padding-bottom: 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border:solid 1px var(--sc-dark-blue);
+    border-top: none;
+}
+.text-intro {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.img-intro {
+    float: left;
+    opacity: 1;
+    clip-path: circle(38%);
+    shape-outside: circle(44%);;
+}
+.title-secondary {
+    background-color: var(--sc-dark-blue);
+    color: var(--sc-light-yellow);
+    border-radius: 0.3em;
+    margin: 0.3em;
+    border: solid 1px var(--sc-coal-grey);
+}
+.block-article {
+    border:solid 1px var(--sc-orange);
+    margin:0.5em 0.2em;
+    border-radius: 0.3rem;
+    background: var(--bg-gradient-main);
+    box-shadow: var(--ts-coal-grey-blur);
+    /*text-shadow: var(--ts-light-blur);*/
+    margin-bottom: 2rem;
+}
+.img-article img {
+    box-sizing: border-box;
+    width:100%;
+}
+.text-article {
+    background-color: var(--sc-light);
+    color: var(--sc-dark-grey);
+    border-radius: 0.3em;
+    margin: 0 0.3em 0.3em 0.3em;
+    border: solid 1px var(--sc-yellow);
+}
+/* End Body */
+/* Footer */
+
+/* End Footer */
+
+#page-bottom { 
+    grid-column: var(--wide-grid);
+    border-top: solid var(--sc-coal-grey) 0.2rem;
+    border-bottom: solid var(--sc-coal-grey) 0.2rem;
+}
+
+/*breakpoints*/
+
+@media screen and (max-width: 599px) {
+    .page-grid {
+        grid-template-columns: 0 1fr 1fr 0;
+    }
+    .container-text-intro { 
+        min-height:140px;
+    }
+}
+
+@media screen and ((min-width: 600px) and (max-width: 766px)) {
+    .page-grid {
+        grid-template-columns: 0.1fr 1fr 1fr 0.1fr;
+    }
+    .container-text-intro { 
+        min-height:240px;
+    }
+}
+
+@media screen and ((min-width: 767px) and (max-width: 990px)) {
+    .page-grid {
+        grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
+    }
+    .container-text-intro { 
+        min-height:245px;
+    }
+}
+
+@media screen and ((min-width: 991px) and (max-width: 1999px)) {
+    .page-grid {
+        grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+    }
+    .container-text-intro { 
+        min-height:350px;
+    }
+}
+ 
+@media screen and (min-width: 1200px) {
+    .page-grid {
+        grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+    }
+    .container-text-intro { 
+        min-height:360px;
+    }
+}
