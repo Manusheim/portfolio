@@ -223,6 +223,10 @@ a:active {
     border-color: var(--sc-orange) var(--sc-orange) var(--sc-yellow) var(--sc-yellow);
 }
 
+.logo-link:visited {
+    text-decoration: none;
+}
+
 .logo1 {
     font-family: "Share Tech Mono", "Courier New", Courier, monospace;
     color: var(--sc-coal-grey);
@@ -259,17 +263,19 @@ a:active {
 }
 .title-main {
     background-color: var(--sc-light-yellow);
-    color: var(--sc-dark-blue);
     padding: 0.5em 1em;
     border-radius: 0.5rem 0.5rem 0 0;
     border:solid 1px var(--sc-yellow);
     border-bottom: none;
 }
-.title-main::first-letter {
+.title-main-text::first-letter {
     font-size:3rem; 
     color: var(--sc-dark-blue);
     text-shadow: var(--sc-dark-blue) 0.2rem 0.2rem 0.4rem;
     font-family: "UnifrakturMaguntia", Georgia, "Times New Roman", Times, serif;
+}
+.title-main-text {
+    color: var(--sc-dark-blue);
 }
 .container-text-intro {
     background-color: var(--sc-light);
