@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Signaux de fum&eacute;e</title>
+        <meta name="author" content="Emmanuelle Mock - 2023 - 2026">
+        <!-- Favicon images -->
+        <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" sizes="32x32">
+        <link href="img/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+        <link href="img/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+        <link href="img/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
+        <link href="img/android-icon-192x192.png" rel="icon" type="image/png" sizes="192x192">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" sizes="128x128">
+        <!-- // Favicon images -->
+        <style>
+        /**
+        * Variables setting
+        */
+        :root {
+        --bg-dark-blue: rgb(20, 20, 31);
+        --fc-light-white: rgb(243, 248, 248);
+
+        --fs-normal: 1rem;
+        --fs-large: 1.2rem;
+        --fs-big: 1.5rem;
+        --fs-bigger: 2rem;
+
+        --opacity: 0.4;
+
+        --col-red:rgb(252,53,3);
+        --col-orange:rgb(255, 162, 41);
+        --col-yellow:rgb(255, 226, 97);
+
+        --col-flame-red: rgba(252,53,3,var(--opacity));
+        --col-flame-orange: rgba(255, 162, 41, var(--opacity));
+        --col-flame-yellow: rgba(255, 226, 97, var(--opacity));
+        }
+        /**
+        * End variables setting 
+        */
+
+
+        /**
+        * Light reset 
+        */
+        html {
+            font-size: 100.01%;
+        }
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1,h2,h3,h4,h5,h6 {
+            padding: 0.8rem 0;
+            margin: 0;
+        }
+        P {
+            padding: 0 0 0.6rem 0;
+            margin: 0;
+            font-size: var(--fs-normal);
+        }
+        a {
+            color:var(--fc-light-white);
+        }
+        a:hover, a:active {
+            color: var(--col-orange);
+            text-decoration: overline;
+        }
+        a:visited {
+            color: var(--col-yellow);
+        }
+        /* End reset */
+       
+        body {
+            background-color: var(--bg-dark-blue);
+            color: var(--fc-light-white);
+            font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            height: 100vh;
+            margin:0;
+        }
+        header {
+            font-size: var(--fs-big);
+            top: 0;
+            position: sticky;
+            padding: 0.5rem;
+        }
+        main {    
+            height: 80vh;
+            width: 100vw;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        footer { 
+            bottom: 0;
+            position: fixed;
+            width: 100vw;
+        }
+        header, footer {
+            text-align: center;
+        }
+        .block-firecamp {
+            z-index:0;   
+        }
+        .block-smoke {
+            font-size: 1.6rem;
+            text-align: center;
+            z-index:-1;
+            width:25vw;
+            height:55vh;
+            position:absolute;
+            bottom:30vh;
+        }
+        .block-smoke > p {
+            position:absolute;
+            bottom:0;
+            font-size: var(--fs-large);
+        }
+        .block-flame {
+            margin: 0 auto;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: firelight 12s ease-in infinite;
+        }  
+        .block-flame img {
+            width:fit-content;
+        }
+        .smoke1,
+        .smoke2,
+        .smoke3, 
+        .smoke4 {
+            text-align: center;
+            filter: blur(0.7rem);
+            transform-origin: 0 0;
+            opacity: 0.05;
+        }
+        .smoke1 {
+            animation: smoke1 10s linear infinite;
+            animation-delay: 0.5s;
+        }
+        .smoke2 {
+            animation: smoke2 12s linear infinite;
+            animation-delay: 2.5s;
+        }
+        .smoke3 {
+            animation: smoke3 10s linear infinite;
+            animation-delay: 4.5s;
+        }
+        .smoke4 {
+            animation: smoke4 11s linear infinite;
+            animation-delay: 6.5s;
+        }
+
+        @keyframes smoke1 {
+            0% {
+            filter: blur(0.3rem);
+            transform: translateX(0.8vh) translateY(0) scale(1);
+            opacity: 0;
+            }  
+            25% {
+            filter: blur(0.01rem);
+            transform: translateX(0.9vh) translateY(-10vw) scale(1.05);
+            opacity: 0.8;
+            }  
+            50% {
+            filter: blur(0.7rem);
+            transform: translateX(1.05vh) translateY(-20vw) scale(1.1);
+            opacity: 1;
+            }  
+            75% {
+            filter: blur(0.8rem);
+            transform: translateX(1vh) translateY(-35vw) scale(1.15);
+            opacity: 0.5;
+            }  
+            100% {
+            filter: blur(0.9rem);
+            transform: translateX(0.7vh) translateY(-50vw) scale(1.2);
+            opacity: 0;
+            }
+        }
+
+        @keyframes smoke2 {
+            0% {
+            filter: blur(0.4rem);
+            transform: translateX(-2vh) translateY(0) scale(1);
+            opacity: 0;
+            }  
+            27% {
+            filter: blur(0.02rem);
+            transform: translateX(-1vh) translateY(-10vw) scale(1.05);
+            opacity: 0.9;
+            }
+            51% {
+            filter: blur(0.8rem);
+            transform: translateX(0) translateY(-20vw) scale(1.1);
+            opacity: 1;
+            }  
+            73% {
+            filter: blur(0.9rem);
+            transform: translateX(1vh) translateY(-35vw) scale(1.15);
+            opacity: 0.5;
+            }  
+            100% {
+            filter: blur(1.1rem);
+            transform: translateX(1.8vh) translateY(-55vw) scale(1.2);
+            opacity: 0;
+            }
+        }
+        
+        @keyframes smoke3 {
+            0% {
+            filter: blur(0.3rem);
+            transform: translateX(5vh) translateY(0) scale(1);
+            opacity: 0.5;
+            }  
+            23% {
+            filter: blur(0);
+            transform: translateX(4vh) translateY(-11vw) scale(1.05);
+            opacity: 1;
+            }  
+            48% {
+            filter: blur(0.8rem);
+            transform: translateX(2.5vh) translateY(-23vw) scale(1.1);
+            opacity: 0.8;
+            }  
+            73% {
+            filter: blur(1.1rem);
+            transform: translateX(1vh) translateY(-35vw) scale(1.15);
+            opacity: 0.5;
+            }  
+            100% {
+            filter: blur(1.5rem);
+            transform: translateX(-3vh) translateY(-52vw) scale(1.2);
+            opacity: 0;
+            }
+        }
+
+        @keyframes smoke4 {
+            0% {
+            filter: blur(0.4rem);
+            transform: translateX(-4vh) translateY(0) scale(1);
+            opacity: 0;
+            }  
+            22% {
+            filter: blur(0.1rem);
+            transform: translateX(-2vh) translateY(-13vw) scale(1.05);
+            opacity: 0.9;
+            }  
+            46% {
+            filter: blur(0.8rem);
+            transform: translateX(3vh) translateY(-25vw) scale(1.1);
+            opacity: 0.7;
+            }  
+            78% {
+            filter: blur(1rem);
+            transform: translateX(4vh) translateY(-35vw) scale(1.15);
+            opacity: 0.5;
+            }  
+            100% {
+            filter: blur(1.2rem);
+            transform: translateX(5vh) translateY(-45vw) scale(1.2);
+            opacity: 0;
+            }
+        }
+
+        @keyframes firelight {
+            0% {
+                filter: drop-shadow(-5px -60px 25px var(--col-flame-yellow)) drop-shadow(-7px -58px 20px var(--col-flame-orange));
+            }
+            25% {
+                filter: drop-shadow(0 -58px 27px var(--col-flame-orange));
+            }
+            50% {
+                filter: drop-shadow(5px -62px 25px var(--col-flame-red)) drop-shadow(6px -60px 25px var(--col-flame-yellow));
+            }
+            75% {
+                filter: drop-shadow(0 -58px 24px var(--col-flame-orange));
+            }
+            100% {
+                filter: drop-shadow(-3px -60px 25px var(--col-flame-yellow)) drop-shadow(-5px -58px 20px var(--col-flame-orange));
+            }
+        }
+
+        @media (max-width: 599px) {
+            .block-smoke > p {
+                font-size: var(--fs-bigger);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .smoke1 {
+            animation: smoke1 20s linear infinite;
+            }
+            .smoke2 {
+            animation: smoke2 24s linear infinite;
+            }    
+            .smoke3 {
+            animation: smoke3 20s linear infinite;
+            }    
+            .smoke4 {
+            animation: smoke4 22s linear infinite;
+            }
+            .firelight {
+            animation: firelight 22s ease-in infinite;
+            }
+        }
+        </style>
+     </head>
+    <body>
+        <header>
+            <h1>Fum&eacute;e de feu de camp...</h1>
+        </header>
+        <main class="block-firecamp">
+                <div class="block-smoke">
+                    <p class="smoke1">L'HTML est mon langage pr&eacute;f&eacute;r&eacute;.</p>
+                    <p class="smoke2">Je fais de l'int&eacute;gration Web depuis longtemps :<br> HTML, CSS, JS, un zeste de PHP.</p>
+                    <p class="smoke3">Je suis passionn&eacute;e par l'accessibilit&eacute; num&eacute;rique.</p>
+                    <p class="smoke4">J'aime les standards du Web.</p>                                     
+                </div>
+                <div class="block-flame">
+                    <img src="./svg/reshot-icon-campfire-MF945DGQUH.svg" width="250" height="250" alt="Feu de camp">
+                </div>
+        </main>
+        <footer>
+            <p>Ic&ocirc;ne SVG, cr&eacute;dit : <a href="https://www.reshot.com/" rel="nofollow" target="_blank">Reshot</a>. 2025, autrice : E.Mock.</p>
+        </footer>
+    </body>
+</html>
